@@ -10,7 +10,7 @@ tehcnológiák:
 
 ## Adatok megadása 
 FlightAgency\src\main\resources\data.sql fájlban található az adatbázis létrehozó script,
-az itt szerepl insert sql-ek módosítával változtatható a tesztadatok köre.
+az itt szereplő insert sql-ek módosítával változtatható a tesztadatok köre.
 
 
 
