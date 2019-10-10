@@ -25,7 +25,7 @@ public class CityServiceImpl implements CityService {
     public City findSmallest() {
         //A feladat kiírásból nem volt egyértelmű, hogy a DB műveletek kerülése-e a cél (jelen esetben a DB is memóriában van).
         //Emiatt ebben az esetben SQL helyett java oldali kiválasztást válaszottam
-        return Collections.min(cityRepository.findAll(), Comparator.comparing(City::getPopulation));
+        return Collections.min(this.cityRepository.findAll(), Comparator.comparing(City::getPopulation));
     }
 
     /**
@@ -36,7 +36,7 @@ public class CityServiceImpl implements CityService {
     public City findLargest() {
         //A feladat kiírásból nem volt egyértelmű, hogy a DB műveletek kerülése-e a cél (jelen esetben a DB is memóriában van).
         //Emiatt ebben az esetben SQL helyett java oldali kiválasztást válaszottam
-        return Collections.max(cityRepository.findAll(), Comparator.comparing(City::getPopulation));
+        return Collections.max(this.cityRepository.findAll(), Comparator.comparing(City::getPopulation));
     }
 
     /**

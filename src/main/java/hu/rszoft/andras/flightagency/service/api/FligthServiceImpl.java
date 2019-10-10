@@ -10,7 +10,6 @@ import hu.rszoft.andras.flightagency.service.util.Dijkstra;
 import hu.rszoft.andras.flightagency.service.util.Node;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -104,8 +103,18 @@ public class FligthServiceImpl implements FlightService {
         return cityNodeMap;
     }
 
+    /**
+     * Útvonalterv lekérdezése
+     * @param sourceCity kiinduló város
+     * @param destionationCity végállomás
+     * @param airline kiválasztott légitársaság (lehet null)
+     * @return
+     */
     public Itinerary getItinerary(City sourceCity, City destionationCity, Airline airline) {
         if (sourceCity == null) {
+            throw new IllegalArgumentException("sourceCity param can't be nul!");
+        }
+        if (destionationCity == null) {
             throw new IllegalArgumentException("sourceCity param can't be nul!");
         }
 

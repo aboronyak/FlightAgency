@@ -9,9 +9,13 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
+/**
+ * Legrövidebb út számítás Dijkstra algoritmus alapján
+ * Gráf reprezentáció a node-okból kiolvasható
+ */
 public class Dijkstra {
 
-    public static void calculateShortestPathFromSource(Node source, Airline preferredAirlline) {
+    public static void calculateShortestPathFromSource(Node source, Airline preferredAirline) {
 
         source.setDistance(0L);
 
@@ -29,7 +33,7 @@ public class Dijkstra {
 
                 if (!settledNodes.contains(neighbourNode)) {
                     flights.forEach(flight -> {
-                        calculateMinimumDistance(neighbourNode, flight, currentNode, preferredAirlline);
+                        calculateMinimumDistance(neighbourNode, flight, currentNode, preferredAirline);
                     });
                     if (neighbourNode.getSelectedFlight() != null) {
                         unsettledNodes.add(neighbourNode);
@@ -50,13 +54,11 @@ public class Dijkstra {
             setCurrent = calculatedDistance < evaluationNode.getDistance();
         }
         if (setCurrent) {
-            //if (sourceDistance + flight.getDistance() < evaluationNode.getDistance()) {
             evaluationNode.setDistance(sourceDistance + flight.getDistance());
             LinkedList<Node> shortestPath = new LinkedList<>(sourceNode.getShortestPath());
             shortestPath.add(sourceNode);
             evaluationNode.setShortestPath(shortestPath);
             evaluationNode.setSelectedFlight(flight);
-            //}
         }
     }
 

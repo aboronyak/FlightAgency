@@ -16,23 +16,26 @@ public class Node {
 
     private City city;
 
-    private LinkedList<Node> shortestPath = new LinkedList<>();
+    private LinkedList<Node> shortestPath;
 
-    private Long distance = Long.MAX_VALUE;
+    private Long distance;
 
-    private Map<Node, List<Flight>> neighbourNodes = new HashMap<>();
+    private Map<Node, List<Flight>> neighbourNodes;
 
     private Flight selectedFlight;
 
     public Node(City city) {
         this.city = city;
+        this.shortestPath = new LinkedList<>();
+        this.distance = Long.MAX_VALUE;
+        this.neighbourNodes = new HashMap<>();
     }
 
     public void addDestination(Node destination, Flight flight) {
-        List<Flight> flights = neighbourNodes.get(destination);
+        List<Flight> flights = this.neighbourNodes.get(destination);
         if (flights == null) {
             flights = new LinkedList<>();
-            neighbourNodes.put(destination, flights);
+            this.neighbourNodes.put(destination, flights);
         }
         flights.add(flight);
     }

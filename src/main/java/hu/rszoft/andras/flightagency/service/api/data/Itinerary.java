@@ -20,30 +20,30 @@ public class Itinerary {
 
     public void addTransfer(Flight flight) {
         this.transfers.add(flight);
-        if (fullDuration > 0) {
-            int remain = (int)(fullDuration%60);
+        if (this.fullDuration > 0) {
+            int remain = (int)(this.fullDuration%60);
             if (remain != 0) {
-                fullDuration += 60 - remain;
+                this.fullDuration += 60 - remain;
             }
         }
-        fullDuration += flight.getTimeInterval();
+        this.fullDuration += flight.getTimeInterval();
     }
 
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        if (airline != null) {
-            builder.append(String.format("%10s:%n", airline.getName()));
+        if (this.airline != null) {
+            builder.append(String.format("%10s:%n", this.airline.getName()));
         } else {
             builder.append(String.format("%10s:%n", "Bármely légitársasággal a legrövidebb út"));
         }
-        if(CollectionUtils.isEmpty(transfers) || hasOtherAirlineTransfer) {
+        if(CollectionUtils.isEmpty(this.transfers) || this.hasOtherAirlineTransfer) {
             builder.append(String.format("%10s%-20s%n","","Nincs útvonal!"));
         } else {
-            if (hasOtherAirlineTransfer) {
+            if (this.hasOtherAirlineTransfer) {
                 builder.append(String.format("%10s%-20s%n","","FIGYELEM! Csak a választott légitársaság járataival nem érhető el a célállomás, a hiányzó útvonalra az alkalmazás más légitásraságot javasol!"));
             }
-            transfers.forEach(flight -> {
-                if (airline == null) {
+            this.transfers.forEach(flight -> {
+                if (this.airline == null) {
                     builder.append(String.format("%10s%s: %s -> %s: %s%n", "",flight.getAirline().getName(), flight.getCityFrom().getName(), flight.getCityTo().getName(), getFormattedDuration(flight.getTimeInterval())));
                 } else {
                     builder.append(String.format("%10s%s -> %s: %s%n", "", flight.getCityFrom().getName(), flight.getCityTo().getName(), getFormattedDuration(flight.getTimeInterval())));
