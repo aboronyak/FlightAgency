@@ -1,16 +1,16 @@
 # FlightAgency
-Flight Agency application
+Légitársaság, járat és város nyilvántartó alkalmazás
+tehcnológiák:
+- adttárolás H2 in memory DB
+- alkalmazás spring boot console application
+
+## Futtatás
+- fordítás: mvn clean install
+- futtatás: mvn spring-boot:run
+
+## Adatok megadása 
+FlightAgency\src\main\resources\data.sql fájlban található az adatbázis létrehozó script,
+az itt szerepl insert sql-ek módosítával változtatható a tesztadatok köre.
 
 
-## Smart-Save API Requirements 
-
-### The functional sprint
-Account
-- register
-- deposit cash
-- withdraw cash
-- fast balance
-
-Statement query
-- Date, transaction type, transaction amount, rolling balance
 
